@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Homepage.dart';
+import 'package:navigator/navigator.dart';
 
 void main() {
   WidgetsApp.debugAllowBannerOverride=false;
@@ -15,9 +16,18 @@ class MyApp extends StatelessWidget {
      initialRoute:  Homepage.id,
      routes: {
        Homepage.id: (context) => Homepage(),
-
-     },
-   );
+         final navigationProvider = RouterConfiguration(
+    paths,);
+       child: MaterialApp(
+    // ...
+    navigatorKey: navigationProvider.navigatorKey,
+    onGenerateRoute: navigationProvider.onGenerateRoute,
+    onUnknownRoute: navigationProvider.onUnknownRoute,
+    // ...    
+),
+},
+);
+);
  }
 }
 
